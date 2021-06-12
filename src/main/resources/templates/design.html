@@ -3,8 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <title>Tacos</title>
-</head>
-<body>
 
+    <!--    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+
+</head>
+<body style="margin: 8px;">
+<h2 th:text="${msg}"></h2>
+<img th:src="@{/images/taco.gif}" alt="tacos"/>
+<form method="POST" th:object="${design}">
+    <div>
+        <div><h5>Designate your wrap:</h5></div>
+        <div th:each="ingredient : ${wrap}">
+            <input name="ingredients" type="checkbox" th:value="${ingredient.id}"
+            />
+            <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+        </div>
+    </div>
+    <br>
+    <div>
+        <div><h5>Designate your protein:</h5></div>
+        <div th:each="ingredient : ${protein}">
+            <input name="ingredients" type="checkbox" th:value="${ingredient.id}"
+            />
+            <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+        </div>
+    </div>
+    <br>
+    <div>
+        <div><h5>Designate your veggies:</h5></div>
+        <div th:each="ingredient : ${veggies}">
+            <input name="ingredients" type="checkbox" th:value="${ingredient.id}"
+            />
+            <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+        </div>
+    </div>
+    <br>
+    <div>
+        <div><h5>Designate your cheese:</h5></div>
+        <div th:each="ingredient : ${cheese}">
+            <input name="ingredients" type="checkbox" th:value="${ingredient.id}"
+            />
+            <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+        </div>
+    </div>
+    <br>
+    <div>
+        <div><h5>Designate your sauce:</h5></div>
+        <div th:each="ingredient : ${sauce}">
+            <input name="ingredients" type="checkbox" th:value="${ingredient.id}"
+            />
+            <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+        </div>
+    </div>
+    <br>
+    <div>
+        <h3>Name your taco creation:</h3>
+        <input type="text" th:field="*{name}" />
+        <br/>
+        <br/>
+        <button class="btn btn-primary">Submit your taco</button>
+    </div>
+
+</form>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
 </html>

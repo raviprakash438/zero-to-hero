@@ -1,10 +1,12 @@
 package com.example.spring.zerotohero.controller;
 
 import com.example.spring.zerotohero.model.Ingredient;
+import com.example.spring.zerotohero.model.Taco;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Arrays;
@@ -35,13 +37,21 @@ public class DesignTacosController {
 
         Type[] types= Ingredient.Type.values();
         for(Type type: types){
+            log.info("type-->"+type.toString().toLowerCase());
              model.addAttribute(type.toString().toLowerCase(), TacosUtil.filterByType(ingredients, type));
 
         }
-      //  model.addAttribute("design", new T)
+        model.addAttribute("design", new Taco());
+        model.addAttribute("msg", "Welcome to...");
         return "design";
 
+    }
 
+    @PostMapping
+    public String ProcessDesign(Taco taco){
+        //Saving we do it later.
+        log.info("taco-->"+taco.toString());
+        return "redirect:order/current";
     }
 
 
